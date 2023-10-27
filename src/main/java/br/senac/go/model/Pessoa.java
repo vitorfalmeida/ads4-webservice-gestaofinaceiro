@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Data //faz os métodos get,set,tostring, hascode, equals
 @Entity //fala para o ORM gerenciar o estado deste item no banco de dados
 @Table(name = "PESSOA") //'nomea' a tabela do banco de dados
@@ -23,4 +25,7 @@ public class Pessoa {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Carteira carteira;
+
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Conta> contas;
 }

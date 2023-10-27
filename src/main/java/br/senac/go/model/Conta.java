@@ -22,4 +22,12 @@ public class Conta {
 
     @Column(name = "DATA_FIM")
     private LocalDateTime dataFim;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TIPO_CONTA_ID")  // Coluna no banco de dados para a chave estrangeira
+    private TipoConta tipoConta;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PESSOA_ID")  // Coluna no banco de dados para a chave estrangeira
+    private Pessoa pessoa;
 }

@@ -28,4 +28,7 @@ public class Carteira {
             fetch = FetchType.LAZY
     )
     List<Pessoa> pessoas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "carteira", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Investimento> investimentos = new ArrayList<>();
 }
